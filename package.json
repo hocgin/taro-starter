@@ -41,10 +41,16 @@
     "@tarojs/react": "3.0.18",
     "@tarojs/runtime": "3.0.18",
     "@tarojs/taro": "3.0.18",
+    "dva-core": "^2.0.3",
+    "dva-loading": "^3.0.21",
     "hash.js": "^1.1.7",
     "lodash": "4.17.15",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "taro-ui": "^3.0.0-alpha.3"
   },
   "devDependencies": {

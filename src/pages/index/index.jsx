@@ -1,10 +1,16 @@
 import React, {Component} from 'react'
+import {connect} from "react-redux";
 import {View, Text} from '@tarojs/components'
 import {AtButton} from 'taro-ui'
 import API from "@/services/api";
 import styles from './index.less'
 
-export default class Index extends Component {
+@connect(({apps}) => ({
+  apps
+}), (dispatch) => ({
+  add: () => dispatch({type: 'apps/findAll', payload: 1})
+}))
+class Index extends Component {
 
   componentWillMount() {
   }
@@ -23,9 +29,11 @@ export default class Index extends Component {
   }
 
   render() {
+    let {add} = this.props;
+    console.log(this.state, this.props);
     return (
       <View>
-        <View className={styles.red}>Hello world!</View>
+        <View className={styles.red} onClick={add}>Hello world!</View>
         <AtButton type='primary'>I need Taro UI</AtButton>
         <Text>Taro UI 支持 Vue 了吗？</Text>
         <AtButton type='primary' circle={true}>支持</AtButton>
@@ -35,3 +43,5 @@ export default class Index extends Component {
     )
   }
 }
+
+export default Index;
