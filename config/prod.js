@@ -1,8 +1,10 @@
+// eslint-disable-next-line import/no-commonjs
 module.exports = {
   env: {
-    NODE_ENV: '"production"'
+    NODE_ENV: '"production"',
   },
   defineConstants: {
+    baseUrl: null
   },
   mini: {},
   h5: {
