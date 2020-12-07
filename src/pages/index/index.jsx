@@ -1,29 +1,31 @@
-import React, { Component } from 'react'
-import { View, Text } from '@tarojs/components'
-import { AtButton } from 'taro-ui'
+import React, {Component} from 'react'
+import {View, Text} from '@tarojs/components'
+import {AtButton} from 'taro-ui'
 import API from "@/services/api";
-
-import "taro-ui/dist/style/components/button.scss" // 按需引入
-import './index.less'
+import styles from './index.less'
 
 export default class Index extends Component {
 
-  componentWillMount () { }
+  componentWillMount() {
+  }
 
-  componentDidMount () {
+  componentDidMount() {
     API.worked({})
   }
 
-  componentWillUnmount () { }
+  componentWillUnmount() {
+  }
 
-  componentDidShow () { }
+  componentDidShow() {
+  }
 
-  componentDidHide () { }
+  componentDidHide() {
+  }
 
-  render () {
+  render() {
     return (
-      <View className='index'>
-        <Text>Hello world!</Text>
+      <View>
+        <View className={styles.red}>Hello world!</View>
         <AtButton type='primary'>I need Taro UI</AtButton>
         <Text>Taro UI 支持 Vue 了吗？</Text>
         <AtButton type='primary' circle={true}>支持</AtButton>
