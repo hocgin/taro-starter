@@ -12,10 +12,13 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  plugins: [],
+  plugins: [
+    '@tarojs/plugin-less'
+  ],
   defineConstants: {},
   alias: {
     '@': path.resolve(__dirname, '..', 'src'),
+    '~@': path.resolve(__dirname, '..', 'src'),
   },
   copy: {
     patterns: [],
