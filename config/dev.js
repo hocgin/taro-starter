@@ -4,7 +4,7 @@ module.exports = {
     NODE_ENV: '"development"',
   },
   defineConstants: {
-    baseUrl: '"http://api.hocgin.local"'
+    baseUrl: '"http://api.hocgin.local:8000"'
   },
   mini: {},
   h5: {

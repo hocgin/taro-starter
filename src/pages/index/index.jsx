@@ -3,13 +3,12 @@ import {connect} from "react-redux";
 import {View, Text} from '@tarojs/components'
 import Test from '@/components/Test'
 import {AtButton} from 'taro-ui'
-import API from "@/services/api";
 import styles from './index.less'
 
 @connect(({apps}) => ({
   apps
 }), (dispatch) => ({
-  add: () => dispatch({type: 'apps/findAll', payload: 1})
+  listCoupon: (args = {}) => dispatch({type: 'apps/listCoupon', ...args})
 }))
 class Index extends Component {
 
@@ -17,7 +16,8 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    API.worked({})
+    let {listCoupon} = this.props;
+    listCoupon({});
   }
 
   componentWillUnmount() {
@@ -30,10 +30,9 @@ class Index extends Component {
   }
 
   render() {
-    let {add} = this.props;
+    let {apps} = this.props;
     return (
       <View>
-        <View className={styles.red} onClick={add}>Hello world!</View>
         <Test></Test>
         <AtButton type='primary'>I need Taro UI</AtButton>
         <Text>Taro UI 支持 Vue 了吗？</Text>

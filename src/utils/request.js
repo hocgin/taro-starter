@@ -30,25 +30,21 @@ export default function Request(
     newOptions.body = JSON.stringify(newOptions.body);
   }
 
-
   let {body, ...rest} = newOptions;
-  return Taro.request({url: url, data: body, ...rest})
+  return Taro.request({url, data: body, ...rest})
     // 响应状态检查
-    .then((response) => {
+    // eslint-disable-next-line no-unused-vars
+    .then(({data, statusCode, header = {}, cookies = [], errMsg}) => {
       if (Config.isDev()) {
-        console.log(`${response.status}:[请求地址]:${response.url}`);
+        console.log(`${statusCode}:[请求地址]:${url}`);
       }
-      if (response.status >= 200 && response.status < 500) {
-        return response;
+      if (statusCode >= 200 && statusCode < 500) {
+        return data;
       }
 
-      const error = new Error(response.statusText);
-      error.response = response;
+      const error = new Error(errMsg);
+      error.response = data;
       throw error;
-    })
-    // 响应结果转JSON
-    .then(response => {
-      return response.json();
     })
     // 异常响应处理
     .catch((e) => {

@@ -1,16 +1,25 @@
+import API from "@/services/api";
+import Utils from "@/utils/utils";
+
 export default {
   namespace: 'apps',
-  state: {},
+  state: {
+    allCoupon: []
+  },
   effects: {
-    * findAll({payload}, {put}) {
-      yield put({type: 'fillAll', payload: payload})
+    * listCoupon({payload = {}, callback}, {put}) {
+      let result = yield API.listCoupon(payload);
+      if (Utils.isSuccess(result)) {
+        yield put({type: 'fillAllCoupon', payload: result.data});
+        if (callback) callback(result);
+      }
     },
   },
   reducers: {
-    fillAll(state, {payload}) {
+    fillAllCoupon(state, {payload}) {
       return {
         ...state,
-        all: payload
+        allCoupon: payload
       };
     },
   },
