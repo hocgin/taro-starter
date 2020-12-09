@@ -2,10 +2,9 @@ import React, {Component} from 'react'
 import {connect} from "react-redux";
 import {View, Text} from '@tarojs/components';
 import Card from '@/components/Card';
-import {AtButton} from 'taro-ui';
 import Taro from '@tarojs/taro';
-import ele from '@/assets/ele_banner.png'
 import ele_guosu from '@/assets/ele_guosu.png'
+import ele from '@/assets/ele_pt.png'
 import styles from './index.less';
 
 const imageMaps = {
@@ -24,14 +23,14 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    let {listCoupon} = this.props;
-    listCoupon({});
   }
 
   componentWillUnmount() {
   }
 
   componentDidShow() {
+    let {listCoupon} = this.props;
+    listCoupon({});
   }
 
   componentDidHide() {
@@ -43,6 +42,7 @@ class Index extends Component {
       {(apps.allCoupon || []).map((item) =>
         <Card onClick={this.onClickCoupon.bind(item)} image={imageMaps[item.type]} />
       )}
+      <Text onClick={this.props.listCoupon}>Hello World</Text>
     </View>);
   }
 

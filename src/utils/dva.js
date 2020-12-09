@@ -1,6 +1,6 @@
 import {create} from "dva-core";
 // import {createLogger} from "redux-logger";
-import createLoading from "dva-loading";
+import immer from 'dva-immer'
 
 
 let app
@@ -12,7 +12,7 @@ function createApp(opt) {
   // redux 的日志
   // opt.onAction = [createLogger()]
   app = create(opt)
-  app.use(createLoading({}))
+  app.use(immer())
 
   if (!registered) {
     opt.models.forEach(model => app.model(model));
