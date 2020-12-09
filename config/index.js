@@ -12,9 +12,7 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  plugins: [
-    '@tarojs/plugin-less'
-  ],
+  plugins: [],
   defineConstants: {},
   alias: {
     '@': path.resolve(__dirname, '..', 'src'),
