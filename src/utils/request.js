@@ -1,5 +1,5 @@
 import Config from '@/config';
-import Taro from '@tarojs/taro'
+import Taro from '@tarojs/taro';
 
 export default function Request(
   url,

@@ -1,9 +1,17 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux";
-import {View, Text} from '@tarojs/components'
-import Test from '@/components/Test'
-import {AtButton} from 'taro-ui'
-import styles from './index.less'
+import {View, Text} from '@tarojs/components';
+import Card from '@/components/Card';
+import {AtButton} from 'taro-ui';
+import Taro from '@tarojs/taro';
+import ele from '@/assets/ele_banner.png'
+import ele_guosu from '@/assets/ele_guosu.png'
+import styles from './index.less';
+
+const imageMaps = {
+  'ele': ele,
+  'ele_guosu': ele_guosu,
+};
 
 @connect(({apps}) => ({
   apps
@@ -31,16 +39,23 @@ class Index extends Component {
 
   render() {
     let {apps} = this.props;
-    return (
-      <View>
-        <Test></Test>
-        <AtButton type='primary'>I need Taro UI</AtButton>
-        <Text>Taro UI 支持 Vue 了吗？</Text>
-        <AtButton type='primary' circle={true}>支持</AtButton>
-        <Text>共建？</Text>
-        <AtButton type='secondary' circle={true}>来</AtButton>
-      </View>
-    )
+    return (<View>
+      {(apps.allCoupon || []).map((item) =>
+        <Card onClick={this.onClickCoupon.bind(item)} image={imageMaps[item.type]} />
+      )}
+    </View>);
+  }
+
+  onClickCoupon({url, mini: {appid, path}}) {
+    switch (Taro.getEnv()) {
+      case Taro.ENV_TYPE.WEAPP: {
+        Taro.navigateToMiniProgram({appId: appid, path: path,});
+        break;
+      }
+      case Taro.ENV_TYPE.WEB:
+      default:
+        window.location.href = url;
+    }
   }
 }
 
