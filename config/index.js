@@ -12,7 +12,9 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  plugins: [],
+  plugins: [
+    ['@tarojs/plugin-mock', {port: 8000}]
+  ],
   defineConstants: {},
   alias: {
     '@': path.resolve(__dirname, '..', 'src'),
