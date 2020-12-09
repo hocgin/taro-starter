@@ -1,8 +1,6 @@
 {
-  "name": "taro-starter",
   "version": "1.0.0",
   "private": true,
-  "description": "taro-starter",
   "templateInfo": {
     "name": "taro-ui",
     "typescript": false,
