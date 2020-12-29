@@ -4,7 +4,8 @@ module.exports = {
     NODE_ENV: '"production"',
   },
   defineConstants: {
-    baseUrl: null
+    baseUrl: '"https://api.hocgin.top"',
+    appid: '"wx19d2028bfdc4decf"'
   },
   mini: {},
   h5: {
