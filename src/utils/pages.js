@@ -2,8 +2,8 @@ import Taro from "@tarojs/taro";
 
 export const PageKey = {
   INDEX_PAGE: '/pages/index/index',
-  APPLY_PAGE: '/pages/apply/index',
-  USER_PAGE: '/pages/user/index',
+  APPLY_PAGE: '/pages/common/apply/index',
+  USER_PAGE: '/pages/common/user/index',
 };
 
 let onCatch = e => console.error(e);
