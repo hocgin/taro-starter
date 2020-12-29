@@ -1,7 +1,14 @@
 import React from 'react';
-import {View, Editor, Input, Icon} from "@tarojs/components";
+import {View, Input, Icon} from "@tarojs/components";
 import * as classnames from "classnames";
+import PropTypes from "prop-types";
 import styles from './index.less';
+
+const DefaultResultItem = ({children}) => {
+  return (<View className={styles.resultItem}>
+    <View>{children}</View>
+  </View>);
+}
 
 class Index extends React.PureComponent {
   state = {
@@ -10,7 +17,12 @@ class Index extends React.PureComponent {
 
   render() {
     let {focus} = this.state;
-    let {className, onChangeKeyword, data = []} = this.props;
+    let {
+      className,
+      onChangeKeyword,
+      data = [],
+      renderItem = (item, index) => <DefaultResultItem key={`${index}`}>{item}</DefaultResultItem>
+    } = this.props;
 
     return (<View className={classnames(styles.component, className)}>
       <View className={styles.searchbar}>
@@ -19,10 +31,10 @@ class Index extends React.PureComponent {
                onBlur={this.onBlurSearch} />
         <Icon size='18' type='search' className={styles.icon} />
       </View>
-      <View className={styles.result} style={{display: (data.length && focus) ? 'block' : 'none'}}>
-        {(data || []).map(({remark, title, logoUrl, tags, viewUrls, href}) => (<View className={styles.resultItem}>
-          <View logoUrl={logoUrl} viewUrls={viewUrls} remark={remark} title={title} tags={tags} href={href} >{title}</View>
-        </View>))}
+      <View className={styles.result} style={{display: ((data.length) && focus) ? 'block' : 'none'}}>
+        {(data || []).map((item, index) => {
+          return renderItem(item, index);
+        })}
       </View>
     </View>);
   }
@@ -37,5 +49,12 @@ class Index extends React.PureComponent {
 
 }
 
+Index.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  onChangeKeyword: PropTypes.func,
+  renderItem: PropTypes.func,
+  data: PropTypes.object,
+};
 export default Index;
 

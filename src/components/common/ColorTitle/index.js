@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text} from "@tarojs/components";
 import classnames from "classnames";
+import PropTypes from "prop-types";
 import styles from './index.less';
 
 class Index extends React.PureComponent {
@@ -16,4 +17,9 @@ class Index extends React.PureComponent {
   }
 }
 
+Index.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  rightBtn: PropTypes.node,
+};
 export default Index;
