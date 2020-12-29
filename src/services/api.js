@@ -24,4 +24,10 @@ export default class API {
       body: {...payload}
     });
   }
+
+  static worked(payload = {}) {
+    return request(`/api/worked`, {
+      method: 'GET'
+    })
+  }
 }

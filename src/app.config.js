@@ -4,6 +4,7 @@ export default {
     'pages/apply/index',
     'pages/user/index'
   ],
+  subpackages: [],
   window: {
     navigationStyle: 'custom',
     backgroundTextStyle: 'light',
