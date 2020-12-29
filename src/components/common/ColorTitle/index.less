@@ -1,0 +1,29 @@
+@import "~@/mixin.less";
+
+.component {
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  .container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .colorBar {
+    background: rgb(233, 59, 61);
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+    width: 100%;
+    height: 16px;
+    display: block;
+    opacity: .7;
+  }
+
+  .title {
+    position: relative;
+    color: #1a1919;
+    font-size: 12pt;
+    font-weight: 700;
+  }
+}

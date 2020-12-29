@@ -1,8 +1,8 @@
 export default {
   pages: [
     'pages/index/index',
-    'pages/apply/index',
-    'pages/user/index'
+    'pages/common/apply/index',
+    'pages/common/user/index'
   ],
   subpackages: [],
   window: {

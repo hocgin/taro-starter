@@ -1,0 +1,66 @@
+@import "~@/mixin.less";
+
+.component {
+  width: 100%;
+
+  .userInfo {
+    display: flex;
+    flex-direction: row;
+    background-color: @theme-color;
+    color: #fff;
+    padding: 10px 0;
+
+    .avatar {
+      width: 128px;
+      height: 128px;
+      margin-left: 20px;
+      margin-right: 20px;
+      border-radius: 50%;
+      border: solid 4px #fff;
+      background-color: @background-color;
+    }
+
+    .detailed {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .nickname {
+        font-size: 13pt;
+        display: block;
+        font-weight: 500;
+      }
+
+      .remark {
+        font-size: 8pt;
+        font-weight: inherit;
+      }
+    }
+  }
+
+  .userTab {
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    background-color: @theme-color;
+    color: #fff;
+    padding: 5px 0 5px;
+    position: relative;
+    box-shadow: 2px 2px 5px @theme-color;
+
+    .tabItem {
+      flex: 1;
+      font-size: 11pt;
+      display: flex;
+      height: 100px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .title {
+        font-size: 8pt;
+        font-weight: inherit;
+      }
+    }
+  }
+}

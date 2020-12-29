@@ -1,0 +1,47 @@
+@import "~@/mixin.less";
+
+.component {
+  position: relative;
+}
+
+.searchbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid rgba(0, 0, 0, .15);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, .06);
+  border-radius: 6px;
+  align-items: center;
+  position: relative;
+
+  .input {
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  .icon {
+    margin-right: 5px;
+    padding: 25px 20px;
+    box-sizing: border-box;
+  }
+}
+
+.result {
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-top: unset;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, .06);
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-radius: 0 0 5px 5px;
+  overflow-y: scroll;
+  //max-height: 200px;
+  display: none;
+  z-index: 1000;
+
+  .resultItem {
+    margin: 10px 0;
+  }
+}

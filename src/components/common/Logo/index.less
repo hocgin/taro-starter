@@ -1,0 +1,35 @@
+@import "~@/mixin.less";
+
+.component {
+  display: inline-block;
+
+  .heart {
+    vertical-align: baseline;
+    color: #f22e3c;
+    margin: 0 4px;
+    height: 22rpx;
+    width: 30rpx;
+    display: inline-block;
+    animation: animation-heartbeat___OMQYH 1.3s ease 0s infinite normal;
+
+    @keyframes animation-heartbeat___OMQYH {
+      0%, 28%, 70% {
+        transform: scale(1)
+      }
+
+      14%, 42% {
+        transform: scale(1.3)
+      }
+    }
+  }
+
+  .text {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    margin-right: 8px;
+    border-bottom: 4px solid #e2e8f0;
+    text-decoration: inherit;
+    box-sizing: inherit;
+    color: #a0aec0;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,96 @@
+@import "~@/mixin.less";
+
+.page {
+  // ..
+}
+
+.container {
+  margin-top: 40px;
+  padding: 40px;
+  box-sizing: border-box;
+
+}
+
+.accountMode {
+
+  .avatar {
+    display: block;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: solid 4px #fff;
+    background-color: @background-color;
+    margin: 0 auto;
+  }
+
+  .accountBox {
+    margin-top: 50px;
+    margin-bottom: 40px;
+  }
+}
+
+.toggleMode {
+  text-align: center;
+  margin: 20rpx 0;
+  padding: 5px 0;
+  color: #626D83;
+  font-size: 12pt;
+}
+
+.wechatMode {
+
+  .header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-direction: column;
+    align-items: center;
+
+    .logo {
+      width: 200px;
+      height: 200px;
+      border-radius: 5%;
+      background-color: @background-color;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, .06);
+    }
+
+    .appName {
+      margin-top: 20px;
+      font-size: 12pt;
+      font-weight: 500;
+    }
+
+  }
+
+  .content {
+    margin-bottom: 30px;
+
+    .tip {
+      font-size: 10pt;
+      font-weight: 500;
+    }
+
+    .authority {
+      color: #9d9d9d;
+      font-size: 9pt;
+      margin-top: 10px;
+
+      &:before {
+        content: '•';
+        font-weight: 600;
+        margin-right: 10px;
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  font-size: 8pt;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #9d9d9d;
+}

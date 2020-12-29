@@ -1,62 +1,68 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux";
-import {View, Text} from '@tarojs/components';
-import Card from '@/components/Card';
 import Taro from '@tarojs/taro';
-import ele_guosu from '@/assets/ele_guosu.png'
-import ele from '@/assets/ele_pt.png'
+import Events from "@/utils/events";
+import {View, Text, Image} from '@tarojs/components';
+import PageLayout from '@/layouts/common/PageLayout';
+import SearchBar from '@/components/common/SearchBar';
+import ColorTitle from "@/components/common/ColorTitle";
+
 import styles from './index.less';
 
-const imageMaps = {
-  'ele': ele,
-  'ele_guosu': ele_guosu,
-};
-
-@connect(({apps}) => ({
-  apps
+@connect(({index}) => ({
+  index
 }), (dispatch) => ({
-  listCoupon: (args = {}) => dispatch({type: 'apps/listCoupon', ...args})
+  // $listRecommend: (args = {}) => dispatch({type: 'index/listRecommend', ...args}),
+  // $search: (args = {}) => dispatch({type: 'index/search', ...args})
 }))
 class Index extends Component {
+  state = {
+    avatarUrl: null,
+  }
 
   componentWillMount() {
-  }
-
-  componentDidMount() {
-  }
-
-  componentWillUnmount() {
+    Events.onUpdateUser(this.refreshAvatarUrl);
   }
 
   componentDidShow() {
-    let {listCoupon} = this.props;
-    listCoupon({});
+    this.refreshAvatarUrl();
   }
 
-  componentDidHide() {
+  componentWillUnmount() {
+    Events.offUpdateUser(this.refreshAvatarUrl);
   }
+
+  refreshAvatarUrl = () => {
+    let avatarUrl = Taro.Current.app.getUserInfo(false)?.avatarUrl;
+    this.setState({
+      avatarUrl: avatarUrl
+    });
+  };
 
   render() {
-    let {apps} = this.props;
-    return (<View>
-      {(apps.allCoupon || []).map((item) =>
-        <Card onClick={this.onClickCoupon.bind(item)} image={imageMaps[item.type]} />
-      )}
-      <Text onClick={this.props.listCoupon}>Hello World</Text>
-    </View>);
+    let {avatarUrl} = this.state;
+    let {index} = this.props;
+
+    return (<PageLayout avatarUrl={avatarUrl} hideBarton hideAvatar={false} title='首页'
+                        containerClassName={styles.page}>
+      <View className={styles.indexBg}>
+        <SearchBar className={styles.searchBar} data={index?.searchResult} onChangeKeyword={this.onChangeKeyword} />
+      </View>
+      <View className={styles.containerWrapper}>
+        <View className={styles.header}>
+          <ColorTitle className={styles.title}>最新推荐</ColorTitle>
+          <Text />
+        </View>
+      </View>
+    </PageLayout>);
   }
 
-  onClickCoupon({url, mini: {appid, path}}) {
-    switch (Taro.getEnv()) {
-      case Taro.ENV_TYPE.WEAPP: {
-        Taro.navigateToMiniProgram({appId: appid, path: path,});
-        break;
-      }
-      case Taro.ENV_TYPE.WEB:
-      default:
-        window.location.href = url;
-    }
-  }
+  onChangeKeyword = (e) => {
+    let keyword = e?.detail?.value;
+    let {$search} = this.props;
+    $search({payload: {keyword}});
+  };
+
 }
 
 export default Index;
