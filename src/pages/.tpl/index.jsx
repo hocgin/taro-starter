@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux";
-import PageLayout from '@/components/PageLayout';
+import PageLayout from '@/layouts/common/PageLayout';
 import styles from './index.less';
 import {Image, Text, View} from "@tarojs/components";
 

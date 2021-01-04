@@ -19,7 +19,6 @@ export default {
         if (callback) callback(result);
       }
       if (complete) complete();
-      Pages.gotoApply();
     },
   },
   reducers: {

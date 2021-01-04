@@ -7,6 +7,7 @@ import Events from "@/utils/events";
 import Config from "@/config";
 
 import styles from './index.less';
+import Pages from "@/utils/pages";
 
 @connect(({user}) => ({
   // user
@@ -50,7 +51,14 @@ class Index extends Component {
     </PageLayout>);
   }
 
-  onClickNickname = () => this.refreshUserInfo(true);
+  onClickNickname = () => {
+    let {nickname} = this.state;
+    if (nickname) {
+      Pages.gotoUserDetail();
+    } else {
+      this.refreshUserInfo(true);
+    }
+  };
 }
 
 export default Index;
