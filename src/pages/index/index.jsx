@@ -6,9 +6,22 @@ import {View, Text, Image} from '@tarojs/components';
 import PageLayout from '@/layouts/common/PageLayout';
 import SearchBar from '@/components/common/SearchBar';
 import ColorTitle from "@/components/common/ColorTitle";
-
+import RowCard from "@/components/RowCard";
 import styles from './index.less';
 
+let appItems = [{
+  title: '子女血型遗存查询',
+  remark: '你想知道你未来小孩的血型吗',
+  logoUrl: 'https://xcx.egzosn.com/image/blood.jpg',
+  viewUrls: [],
+  tags: ['子女', '血型', '遗传'],
+  href: {
+    mini: {
+      appid: null,
+      path: `/pages/bloodtype/index`
+    }
+  }
+}];
 @connect(({index}) => ({
   index
 }), (dispatch) => ({
@@ -52,6 +65,11 @@ class Index extends Component {
         <View className={styles.header}>
           <ColorTitle className={styles.title}>最新推荐</ColorTitle>
           <Text />
+        </View>
+        <View className={styles.container}>
+          {(appItems|| []).map(({remark, title, logoUrl, tags, viewUrls, href}) =>
+            <RowCard className={styles.rowCard} logoUrl={logoUrl} viewUrls={viewUrls} remark={remark} title={title}
+                     tags={tags} href={href} />)}
         </View>
       </View>
     </PageLayout>);

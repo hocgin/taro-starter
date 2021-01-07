@@ -5,7 +5,7 @@ module.exports = {
   },
   defineConstants: {
     baseUrl: '"https://api-dev.hocgin.top"',
-    appid: '"touristappid"'
+    appid: '"wx2388ca4e8e51be62"'
   },
   plugins: [
     ['@tarojs/plugin-mock', {port: 8000}]
