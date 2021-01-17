@@ -8,6 +8,7 @@ import Avatarton from "@/components/common/Avatarton";
 import Utils from "@/utils/utils";
 import Pages from "@/utils/pages";
 import Config from "@/config";
+import PropTypes from "prop-types";
 import styles from './index.less';
 
 let tabBar = [
@@ -61,6 +62,7 @@ class Index extends React.Component {
       children, title,
       // 顶部
       wrapperAppbarClassName,
+      hideNavBar = false,
       hideBarton = false,
       navbarColor = '#020202',
       showAddTips = false,
@@ -79,6 +81,7 @@ class Index extends React.Component {
       tabIndex
     } = this.state;
     let appbarStyle = {
+      backgroundColor: hideNavBar ? 'none' : 'rgba(255, 255, 255, .98)',
       height: defaultHeaderHeight,
       borderBottom: hasScroll ? 'solid 1px #F0F0F0' : 'none',
       paddingTop: statusBarHeight
@@ -94,7 +97,7 @@ class Index extends React.Component {
                      onClickGoUser={this.onClickAvatarton} />
           <Barton visible={!hideBarton} className={classnames(styles.barton, wrapperBartonClassName)} />
         </View>
-        <View className={styles.appbarSpace} style={{height: appbarHeight, opacity: 0}} />
+        {hideNavBar ? <></> : <View className={styles.appbarSpace} style={{height: appbarHeight, opacity: 0}} />}
       </>}
       {/*内容容器*/}
       <View className={containerClassName}>
@@ -109,9 +112,11 @@ class Index extends React.Component {
       </>}
       {/* 提示用户添加到我的小程序*/}
       {(showAddTips && !closeAddTips) ? <View className={styles.addTips}>
-        <View className={styles.tips}>添加到我的小程序 <AtIcon className={styles.close} size={12}
-                                                       onClick={this.onClickCloseTip}
-                                                       value={'close-circle'} /></View>
+        <View className={styles.tips}
+              style={{top: hideNavBar ? (statusBarHeight + defaultHeaderHeight) : 0}}>添加到我的小程序 <AtIcon
+          className={styles.close} size={12}
+          onClick={this.onClickCloseTip}
+          value={'close-circle'} /></View>
       </View> : <></>}
     </View>);
   }
@@ -134,5 +139,22 @@ class Index extends React.Component {
     });
   }
 }
+
+Index.propTypes = {
+  wrapperClassName: PropTypes.string,
+  containerClassName: PropTypes.string,
+  wrapperAppbarClassName: PropTypes.string,
+  wrapperBartonClassName: PropTypes.string,
+  title: PropTypes.string,
+  navbarColor: PropTypes.string,
+  avatarUrl: PropTypes.string,
+  children: PropTypes.node,
+  hideTabBar: PropTypes.bool,
+  hideAppbar: PropTypes.bool,
+  hideAvatar: PropTypes.bool,
+  hideNavBar: PropTypes.bool,
+  showAddTips: PropTypes.bool,
+  hideBarton: PropTypes.bool,
+};
 
 export default Index;
