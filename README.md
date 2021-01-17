@@ -84,6 +84,14 @@ npm run dev:weapp
 
 </details>
 
+### 演示
+
+#### 使用小程序
+<img src="http://cdn.hocgin.top/%E5%B0%8F%E7%A8%8B%E5%BA%8F.jpg" width = "100" alt="图片名称" align=center />
+
+#### 部分截图
+<img src="http://cdn.hocgin.top/WechatIMG323%20%281%29.jpeg" width = "100" alt="图片名称" align=center />
+
 ### 联系作者
 
 <img src="http://cdn.hocgin.top/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.png" width = "100" height = "100" alt="图片名称" align=center />
