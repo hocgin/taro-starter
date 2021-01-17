@@ -3,14 +3,14 @@
 > - 这是一份基于 3.x 的 Taro 模版, 如果有需要可以点击`Use this Template`进行使用。
 > - [Taro 官方文档](https://taro-docs.jd.com/taro/docs/README)
 
-## 基础架构
+### 基础架构
 
 - DvaJS
 - Taro
 - Taro UI
 - Less
 
-## 目录结构
+### 目录结构
 
 ```shell
 .
@@ -58,3 +58,8 @@
 │    └── theme.less        # 全局样式主题
 └── webpack.config.js
 ```
+
+### 联系作者
+
+<img src="http://cdn.hocgin.top/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.png" width = "100" height = "100" alt="图片名称" align=center />
+
