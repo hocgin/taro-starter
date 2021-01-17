@@ -10,6 +10,22 @@
 - Taro UI
 - Less
 
+### 如何使用
+
+1. 安装基础依赖
+
+```shell
+yarn 
+```
+
+2. 运行项目
+
+```shell
+npm run dev:weapp
+```
+
+3. 使用`微信开发工具`导入`dist`目录
+
 ### 目录结构
 
 ```shell
