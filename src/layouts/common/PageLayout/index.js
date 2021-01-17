@@ -1,5 +1,5 @@
 import React from 'react';
-import {AtNavBar, AtTabBar} from 'taro-ui'
+import {AtIcon, AtNavBar, AtTabBar} from 'taro-ui'
 import Taro from "@tarojs/taro";
 import classnames from 'classnames';
 import {View} from "@tarojs/components";
@@ -24,6 +24,7 @@ class Index extends React.Component {
     hasScroll: false,
     appbarHeight: null,
     tabIndex: 0,
+    closeAddTips: false,
   };
 
   componentDidMount() {
@@ -62,6 +63,7 @@ class Index extends React.Component {
       wrapperAppbarClassName,
       hideBarton = false,
       navbarColor = '#020202',
+      showAddTips = false,
       hideAppbar = false,
       hideAvatar = true,
       // - 浮动按钮
@@ -73,7 +75,7 @@ class Index extends React.Component {
     } = this.props;
     let {
       defaultHeaderHeight, statusBarHeight, hasScroll,
-      tabBarHeight, appbarHeight,
+      tabBarHeight, appbarHeight, closeAddTips,
       tabIndex
     } = this.state;
     let appbarStyle = {
@@ -105,13 +107,21 @@ class Index extends React.Component {
                   current={tabIndex} />
         <View style={{height: tabBarHeight}} />
       </>}
+      {/* 提示用户添加到我的小程序*/}
+      {(showAddTips && !closeAddTips) ? <View className={styles.addTips}>
+        <View className={styles.tips}>添加到我的小程序 <AtIcon className={styles.close} size={12}
+                                                       onClick={this.onClickCloseTip}
+                                                       value={'close-circle'} /></View>
+      </View> : <></>}
     </View>);
   }
 
   onClickAvatarton = () => {
-    Pages
-      .gotoUser();
+    Pages.gotoUser();
   }
+  onClickCloseTip = () => {
+    this.setState({closeAddTips: true});
+  };
 
   onClickTab = (index) => {
     let {tabIndex} = this.state;
