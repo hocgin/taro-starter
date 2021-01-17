@@ -3,19 +3,13 @@
 > - 这是一份基于 3.x 的 Taro 模版, 如果有需要可以点击`Use this Template`进行使用。
 > - [Taro 官方文档](https://taro-docs.jd.com/taro/docs/README)
 
-### 基础架构
-
-- DvaJS
-- Taro
-- Taro UI
-- Less
-
 ### 如何使用
 
 1. 安装基础依赖
 
 ```shell
 yarn 
+# or npm install
 ```
 
 2. 运行项目
@@ -26,7 +20,20 @@ npm run dev:weapp
 
 3. 使用`微信开发工具`导入`dist`目录
 
-### 目录结构
+### 项目说明
+
+<details>
+<summary>基础架构</summary>
+
+- DvaJS
+- Taro
+- Taro UI
+- Less
+
+</details>
+
+<details>
+<summary>目录结构</summary>
 
 ```shell
 .
@@ -74,6 +81,8 @@ npm run dev:weapp
 │    └── theme.less        # 全局样式主题
 └── webpack.config.js
 ```
+
+</details>
 
 ### 联系作者
 
