@@ -6,7 +6,7 @@ import Utils from "@/utils/utils";
 export default class API {
 
   static getUserToken(payload = {}) {
-    return request(`/docking/wx/miniapp/${Config.getAppid()}/token`, {
+    return request(`/docking/wx/miniapp/${Config.getAppid()}/token2`, {
       method: 'POST',
       body: {...payload}
     });

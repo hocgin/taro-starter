@@ -5,8 +5,10 @@ import Pages from "@/utils/pages";
 import {Button, Image, Text, View} from "@tarojs/components";
 import Taro from "@tarojs/taro";
 import Config from "@/config";
+import applyModel from '@/pages/common/apply/model';
 import {AtButton, AtInput} from "taro-ui";
 import classnames from "classnames";
+import {dispatchType} from "@/utils/model-utils";
 import styles from './index.less';
 
 const LoginMode = {
@@ -25,7 +27,7 @@ let UseWeChatMode = ({isLogging, onClickGetUserInfo, onClickLoginUseWeChat, onCl
       <View className={styles.tip}>允许小程序获得微信授权，才能正常使用</View>
       <View className={styles.authority}>获得你的公开信息(昵称，头像等)</View>
     </View>
-    <AtButton openType='getUserInfo' type='primary'
+    <AtButton type='primary'
               loading={isLogging} onClick={onClickLoginUseWeChat}
               onGetUserInfo={onClickGetUserInfo}>一键登录</AtButton>
     <View className={styles.toggleMode}
@@ -55,9 +57,9 @@ let UsePasswordMode = ({ isLogging, password, username,
 @connect(({apply}) => ({
   apply
 }), (dispatch) => ({
-  $getUserToken: (args = {}) => dispatch({type: 'apply/getUserToken', ...args}),
-  $login: (args = {}) => dispatch({type: 'apply/login', ...args}),
-  $getCurrentUser: (args = {}) => dispatch({type: 'apply/getCurrentUser', ...args}),
+  $getUserToken: (args = {}) => dispatch({type: dispatchType(applyModel, applyModel.effects.getUserToken), ...args}),
+  $login: (args = {}) => dispatch({type: dispatchType(applyModel, applyModel.effects.login), ...args}),
+  $getCurrentUser: (args = {}) => dispatch({type: dispatchType(applyModel, applyModel.effects.getCurrentUser), ...args}),
 }))
 class Index extends Component {
   state = {
@@ -65,7 +67,6 @@ class Index extends Component {
     isLogging: false,
     hasUserInfo: false,
     mode: LoginMode.UseWeChat,
-    canIUse: Taro.canIUse('button.open-type.getUserInfo') ?? false,
     // ..
     username: null,
     password: null
@@ -120,7 +121,6 @@ class Index extends Component {
 
   // 如果登陆则自动回退
   hookIsLogged = () => {
-    let {hasUserInfo, canIUse} = this.state;
     let app = Taro.Current.app;
     let userInfo = app.getUserInfo(false);
     let isLogged = app.isLogged(userInfo);
@@ -134,7 +134,6 @@ class Index extends Component {
   // 加载用户信息
   loadUserInfo = () => {
     const app = Taro.Current.app;
-    let {canIUse} = this.state;
 
     let userInfo = app?.getUserInfo(false);
     if (userInfo) {
@@ -143,8 +142,8 @@ class Index extends Component {
         userInfo: userInfo,
         hasUserInfo: true
       });
-    } else if (canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+    } else {
+      // 由于 获取用户信息 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
         console.debug("==> 从内存中获取用户信息", res)
@@ -153,10 +152,6 @@ class Index extends Component {
           hasUserInfo: true
         });
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      // this.onClickLogin();
-      Taro.getUserInfo({}).then(res => console.debug("==> 请求用户确认获取用户信息", res));
     }
   };
 
@@ -195,7 +190,7 @@ class Index extends Component {
                 username: data?.username
               },
             });
-        }});
+          }});
         // @formatter:on
       },
       complete: () => this.setState({isLogging: false}),

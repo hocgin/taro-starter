@@ -52,17 +52,17 @@ class App extends Component {
     // @formatter:off
     app.login = ({ focuse = false,
                    complete = () => {}, success = (userInfo) => { }}) => {
-    // @formatter:on
+      // @formatter:on
       let userInfo = app.getUserInfo(false);
       if (focuse || !userInfo) {
-        Taro.login({}).then(({errMsg, code}) => {
-          if (!code) {
-            console.warn('登陆失败: ', errMsg);
-            complete();
-            return;
-          }
-          Taro.getUserInfo({withCredentials: true}).then(res => {
-            API.getUserToken({code, ...res}).then(result => {
+        Taro.getUserProfile({desc: '登陆'}).then(res => {
+          Taro.login({}).then(({errMsg, code}) => {
+            if (!code) {
+              console.warn('登陆失败: ', errMsg);
+              complete();
+              return;
+            }
+            API.getUserToken({code, ...res?.userInfo}).then(result => {
               if (Utils.ifFailShowMessage(result)) {
                 success(app.setUserInfo(result?.data));
               }
@@ -85,7 +85,7 @@ class App extends Component {
   loadUserInfo() {
     let app = Taro.Current.app;
     Taro.getSetting({}).then(res => {
-      // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+      // 已经授权，可以直接调用 获取头像昵称，不会弹框
       if (res.authSetting['scope.userInfo']) {
         app.login({callback: app.userInfoReadyCallback});
       }
