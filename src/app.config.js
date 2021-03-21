@@ -5,6 +5,7 @@ export default {
     'pages/common/apply/index',
     'pages/common/user/index',
     'pages/common/user/detail/index',
+    "pages/bloodtype/index",
   ],
   subpackages: [],
   window: {
