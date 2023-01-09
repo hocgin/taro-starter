@@ -1,16 +1,15 @@
 export default {
   pages: [
-    // 'pages/face/index',
-    //
+    'pages/common/login/index',
     'pages/index/index',
+    'pages/tpl/index',
     // 'pages/test/index',
     // 通用组件
     // 'pages/common/verify/index',
-    // 'pages/common/login/index',
     // 'pages/common/login/qrcode/index',
     // 'pages/common/user/index',
     // 'pages/common/user/detail/index',
-    // 'pages/common/webview/index',
+    'pages/common/webview/index',
     // 'pages/common/message/index',
     // 自定义组件
     // 'pages/avatar/index',

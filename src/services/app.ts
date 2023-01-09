@@ -1,10 +1,10 @@
-import {request} from '@hocgin/taro-kit';
+import {EnvPropsKit, request} from '@hocgin/taro-kit';
 import Config from "@/config";
 
 export default class {
 
   static getUserToken(payload = {}) {
-    return request(`/docking/wx/miniapp/${Config.getAppid()}/token2`, {
+    return request(`/docking/wx/miniapp/${EnvPropsKit.getAppid()}/token2`, {
       method: 'POST',
       body: {...payload}
     });

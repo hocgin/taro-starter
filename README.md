@@ -2,6 +2,8 @@
 
 > - 这是一份基于 3.x 的 Taro 模版, 如果有需要可以点击`Use this Template`进行使用。
 > - [Taro 官方文档](https://taro-docs.jd.com/taro/docs/README)
+> - [Taro Hooks](https://github.com/innocces/taro-hooks)
+> - [Vantui](https://github.com/antmjs/vantui)
 
 ### 如何使用
 
@@ -87,9 +89,11 @@ npm run dev:weapp
 ### 演示
 
 #### 使用小程序
+
 <img src="http://cdn.hocgin.top/%E5%B0%8F%E7%A8%8B%E5%BA%8F.jpg" width = "100" alt="图片名称" align=center />
 
 #### 部分截图
+
 <img src="http://cdn.hocgin.top/WechatIMG323%20%281%29.jpeg" width = "100" alt="图片名称" align=center />
 
 ### 联系作者

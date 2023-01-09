@@ -1,18 +1,5 @@
-import Taro from "@tarojs/taro";
+import {PageKit as _PageKit} from "@hocgin/taro-kit";
 
-export enum PageKeys {
-  Home = '/pages/index/index',
-  Login = '/pages/common/login/index',
-}
+export class PageKit extends _PageKit {
 
-export class PageKit {
-
-  static GoHome() {
-    return Taro.reLaunch({url: PageKeys.Home});
-  }
-
-
-  static GoLogin() {
-    return Taro.reLaunch({url: PageKeys.Login});
-  }
 }

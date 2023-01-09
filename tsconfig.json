@@ -26,7 +26,7 @@
       "~@/*": ["./src/*"]
     }
   },
-  "include": ["./src", "global.d.ts"],
+  "include": ["./src", "./types"],
   "exclude": [
     "node_modules",
     "dist"
