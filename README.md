@@ -79,7 +79,7 @@ npm run dev:weapp
 │    ├── mixin.less        # 通用样式
 │    ├── theme.global.scss # 自定义样式主题
 │    └── theme.less        # 全局样式主题
-└── webpack.config.js
+└── webpack.config.ts
 ```
 
 </details>
