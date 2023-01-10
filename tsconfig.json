@@ -29,7 +29,8 @@
   "include": ["./src", "./types"],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "_"
   ],
   "compileOnSave": false
 }
