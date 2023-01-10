@@ -1,9 +1,10 @@
 # taro-starter
 
 > - 这是一份基于 3.x 的 Taro 模版, 如果有需要可以点击`Use this Template`进行使用。
-> - [Taro 官方文档](https://taro-docs.jd.com/taro/docs/README)
-> - [Taro Hooks](https://github.com/innocces/taro-hooks)
-> - [Vantui](https://github.com/antmjs/vantui)
+
+- [Taro 官方文档](https://taro-docs.jd.com/taro/docs/README)
+- [Taro Hooks](https://github.com/innocces/taro-hooks)
+- [Vantui](https://github.com/antmjs/vantui)
 
 ### 如何使用
 
