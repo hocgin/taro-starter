@@ -1,16 +1,20 @@
-import {useDidShow} from '@tarojs/taro';
-import {PageContainer, SearchBar} from '@hocgin/taro-ui';
+import {useDidShow, useShareAppMessage, useShareTimeline} from '@tarojs/taro';
+import {Pages} from '@hocgin/taro-ui';
 import React from "react";
+import {LangKit} from "@hocgin/taro-kit";
+import {View} from '@tarojs/components';
 
-const Index: React.FC<{}> = ({}) => {
-  useDidShow(() => {
-    // 初始化请求
-  });
-
-  return (<PageContainer title='测试页面'>
-    <SearchBar/>
-    {/*<ColorTitle>..测试</ColorTitle>*/}
-  </PageContainer>);
-};
-
-export default Index;
+export default () => {
+  useShareAppMessage(LangKit.createShare);
+  useShareTimeline(LangKit.createShare);
+  return (<Pages.IndexPage.IndexScroll renderItem={(v) => <View>{v}</View>}
+                                       scroll={async (...args) => {
+                                         console.log('搜索', args)
+                                         return [
+                                           1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                                           1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                                           1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                                           1, 2, 3, 4, 5, 6, 7, 8, 9, 11
+                                         ];
+                                       }}/>);
+}

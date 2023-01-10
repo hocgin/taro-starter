@@ -1,21 +1,16 @@
 import Taro, {useDidShow} from '@tarojs/taro';
-import './app.less'
-import {PromiseKit} from "@hocgin/taro-kit";
 import {PageKit} from "@/_utils";
-import {defaultRequestOptions, EnvPropsKit} from "@hocgin/taro-kit";
+import {defaultRequestOptions, EnvPropsKit, PromiseKit, TaroKit} from "@hocgin/taro-kit";
 import Config from "@/config";
+import './app.less'
 
 defaultRequestOptions({
   baseUrl: Config.getBaseUrl(),
-  nologin: PageKit.toLogin,
+  nologin: () => PageKit.toLogin(),
   addHeaders: async () => ({
     "X-Source": `${EnvPropsKit.getAppid()}`,
   }),
-  errorHandler: error => Taro.showToast({
-    title: `${error?.message ?? `系统繁忙`}`,
-    icon: 'error',
-    duration: 1000
-  }),
+  errorHandler: error => TaroKit.error(`${error?.message ?? `系统繁忙`}`),
 });
 
 export default ({children}) => {

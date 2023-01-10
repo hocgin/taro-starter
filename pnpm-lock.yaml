@@ -4,10 +4,10 @@ specifiers:
   '@antmjs/vantui': ^2.4.0
   '@babel/core': ^7.8.0
   '@babel/runtime': ^7.7.7
-  '@hocgin/hkit': ^2.0.26
+  '@hocgin/hkit': ^2.0.27
   '@hocgin/mock-kit': ^2.0.25
-  '@hocgin/taro-kit': ^2.0.26
-  '@hocgin/taro-ui': ^2.0.26
+  '@hocgin/taro-kit': ^2.0.27
+  '@hocgin/taro-ui': ^2.0.27
   '@pmmmwh/react-refresh-webpack-plugin': ^0.5.5
   '@tarojs/cli': 3.5.11
   '@tarojs/components': 3.5.11
@@ -38,6 +38,7 @@ specifiers:
   babel-preset-taro: 3.5.11
   classnames: ^2.2.6
   dayjs: ^1.11.7
+  dotenv: ^16.0.3
   hash.js: ^1.1.7
   lodash: ^4.17.20
   mockjs: ^1.1.0
@@ -52,9 +53,9 @@ specifiers:
 dependencies:
   '@antmjs/vantui': 2.4.0_sfoxds7t5ydpegc3knd667wn6m
   '@babel/runtime': 7.20.7
-  '@hocgin/hkit': 2.0.26_dayjs@1.11.7
-  '@hocgin/taro-kit': 2.0.26_bg5k6synrweal2rqh24hu776hm
-  '@hocgin/taro-ui': 2.0.26_juulce44aik5vug3hw7it372fi
+  '@hocgin/hkit': 2.0.27_dayjs@1.11.7
+  '@hocgin/taro-kit': 2.0.27_lzmfs2qdxunue6jjqw23iledtu
+  '@hocgin/taro-ui': 2.0.27_aj2voc6jbapqlqvzxxo7sh33o4
   '@tarojs/components': 3.5.11_@types+react@18.0.26
   '@tarojs/helper': 3.5.11
   '@tarojs/plugin-framework-react': 3.5.11_4sav4oylypcw3oxenbavzv65bq
@@ -94,6 +95,7 @@ devDependencies:
   babel-plugin-import: 1.13.6
   babel-plugin-transform-remove-console: 6.9.4
   babel-preset-taro: 3.5.11_l4wmzyfecaqdvyrxgh5436qxyu
+  dotenv: 16.0.3
   mockjs: 1.1.0
   react-refresh: 0.11.0
   typescript: 4.9.4
@@ -1499,8 +1501,8 @@ packages:
     dependencies:
       '@hapi/hoek': 9.3.0
 
-  /@hocgin/hkit/2.0.26_dayjs@1.11.7:
-    resolution: {integrity: sha512-P2pvioTk/krxJJjmcWAsvkX81SRKXD2DQ3HbwmZ7/e3SfJCEIxD26dO4E1QFdjOIVuNButPVnPLMutoIXEfP3Q==}
+  /@hocgin/hkit/2.0.27_dayjs@1.11.7:
+    resolution: {integrity: sha512-b2RnOOLXRIbKJQZVA+Wyw2cha0CpdaPafFxiLIGWK24OfVP04U1rHaJJEC9JWaiDqZ/0E4uWbrb1wIwZ/AzJYg==}
     peerDependencies:
       dayjs: ^1.11.1
     dependencies:
@@ -1520,8 +1522,8 @@ packages:
       react-dom: 17.0.2_react@17.0.2
     dev: true
 
-  /@hocgin/taro-kit/2.0.26_bg5k6synrweal2rqh24hu776hm:
-    resolution: {integrity: sha512-FAZO9U4BiB1HPw4sUoceV+jGbFUGuJA0/+LK8EKD6XALqVUp9v2E0IjpysiSuyN7PpLRL0MBmeYoYdVITh4uOg==}
+  /@hocgin/taro-kit/2.0.27_lzmfs2qdxunue6jjqw23iledtu:
+    resolution: {integrity: sha512-gCfiryJuXALh2+Dv2CpnCP0G5y0ZQPegLlJ4+L/B85Y6BelgY9FOn1GZmByI1/VUO36yIqEzpZPAWL1XVmMvAg==}
     peerDependencies:
       '@hocgin/hkit': workspace:*
       '@tarojs/plugin-framework-react': ^3.5.11
@@ -1538,7 +1540,7 @@ packages:
       react: ^17
       react-dom: ^17
     dependencies:
-      '@hocgin/hkit': 2.0.26_dayjs@1.11.7
+      '@hocgin/hkit': 2.0.27_dayjs@1.11.7
       '@tarojs/plugin-framework-react': 3.5.11_4sav4oylypcw3oxenbavzv65bq
       '@tarojs/plugin-platform-alipay': 3.5.11_@types+react@18.0.26
       '@tarojs/plugin-platform-jd': 3.5.11_@types+react@18.0.26
@@ -1554,10 +1556,11 @@ packages:
       react-dom: 17.0.2_react@17.0.2
     dev: false
 
-  /@hocgin/taro-ui/2.0.26_juulce44aik5vug3hw7it372fi:
-    resolution: {integrity: sha512-tZzh19s35+zdrnhyO4R4IifSvCMcvnJTNdFCqcbkwu2C7Ii47UHbMhHkawRU2qvfu4NeT1BEV0W5H6IoRYwWdA==}
+  /@hocgin/taro-ui/2.0.27_aj2voc6jbapqlqvzxxo7sh33o4:
+    resolution: {integrity: sha512-SUDLnl3LtUsyR7t7d0444c1bwISyzE+bDNAyHS23y/dJm9jU/swTjWj3Hs2qp6k1kF9ZUkYQBgdEo9Dijz715A==}
     peerDependencies:
       '@antmjs/vantui': ^2.4.0
+      '@hocgin/hkit': workspace:*
       '@hocgin/taro-kit': workspace:*
       '@tarojs/components': ^3.5.11
       '@tarojs/react': ^3.5.11
@@ -1567,7 +1570,8 @@ packages:
       react-dom: ^17
     dependencies:
       '@antmjs/vantui': 2.4.0_sfoxds7t5ydpegc3knd667wn6m
-      '@hocgin/taro-kit': 2.0.26_bg5k6synrweal2rqh24hu776hm
+      '@hocgin/hkit': 2.0.27_dayjs@1.11.7
+      '@hocgin/taro-kit': 2.0.27_lzmfs2qdxunue6jjqw23iledtu
       '@tarojs/components': 3.5.11_@types+react@18.0.26
       '@tarojs/react': 3.5.11_react@17.0.2
       '@tarojs/runtime': 3.5.11

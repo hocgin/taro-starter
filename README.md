@@ -27,9 +27,8 @@ npm run dev:weapp
 <details>
 <summary>基础架构</summary>
 
-- DvaJS
 - Taro
-- Taro UI
+- VantUI
 - Less
 
 </details>

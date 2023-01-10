@@ -1,7 +1,6 @@
+require('dotenv').config()
 // babel-preset-taro 更多选项和默认值：
 // https://github.com/NervJS/taro/blob/next/packages/babel-preset-taro/README.md
-
-
 function useLogger() {
   let result = [];
   let offLogger = process.env.USE_LOG !== 'true';
@@ -14,7 +13,6 @@ function useLogger() {
   }
   return result;
 }
-
 
 module.exports = {
   presets: [

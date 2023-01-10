@@ -1,3 +1,4 @@
-export default definePageConfig({
-  navigationBarTitleText: '首页2'
-})
+export default {
+  navigationBarTitleText: '',
+  enableShareAppMessage: true,
+}
