@@ -1,8 +1,9 @@
 // eslint-disable-next-line import/no-commonjs
 const path = require('path');
+let pkg = require(path.join(__dirname, '../package.json'));
 
 const config = {
-  projectName: 'taro-starter',
+  projectName: pkg.name,
   date: '2020-12-7',
   designWidth: 750,
   deviceRatio: {
@@ -11,8 +12,10 @@ const config = {
     828: 1.81 / 2
   },
   sourceRoot: 'src',
-  outputRoot: 'dist',
-  defineConstants: {},
+  outputRoot: `dist/${process.env.TARO_ENV}/dist`,
+  defineConstants: {
+    version: '"1.0.2"'
+  },
   alias: {
     '@': path.resolve(__dirname, '..', 'src'),
     '~@': path.resolve(__dirname, '..', 'src'),
@@ -22,7 +25,16 @@ const config = {
     options: {}
   },
   framework: 'react',
+  cache: {
+    enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
+  },
   mini: {
+    miniCssExtractPluginOption: {
+      ignoreOrder: true
+    },
+    optimizeMainPackage: {
+      enable: true
+    },
     postcss: {
       pxtransform: {
         enable: true,
@@ -41,7 +53,7 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
       }
-    }
+    },
   },
   h5: {
     publicPath: '/',
@@ -59,7 +71,10 @@ const config = {
         }
       }
     }
-  }
+  },
+  plugins: [
+    '@tarojs/plugin-html',
+  ]
 }
 
 module.exports = function (merge) {

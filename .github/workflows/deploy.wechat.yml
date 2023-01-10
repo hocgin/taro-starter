@@ -1,0 +1,52 @@
+name: Deploy::Wechat
+on:
+  workflow_dispatch:
+    inputs:
+      use_cache:
+        description: '是否使用缓存'
+        required: true
+        default: 'true'
+  push:
+    tags:
+      - 'v*'
+env:
+  WECHAT_KEY_FILE: ${{ secrets.WECHAT_KEY_FILE }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - id: prep
+        uses: hocgin/action-env@main
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+      - run: npm run build:weapp
+        env:
+          NODE_OPTIONS: '--max_old_space_size=4096'
+      - uses: hocgin/action-wechat-project-publish@main
+        with:
+          workspace: ./dist/weapp/dist
+          env: ${{ steps.prep.outputs.env }}
+          version: ${{ steps.prep.outputs.version }}
+          upload_key: ${{ env.WECHAT_KEY_FILE }}
